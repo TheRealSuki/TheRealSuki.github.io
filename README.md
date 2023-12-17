@@ -4,7 +4,7 @@
 
 ## Education
 **BSc Physics | University of Aberdeen (_September 2020 - May 2024_)**
-- Project: Ultrarelativist charged particles
+- Project: Ultrarelativistic charged particles
 
 ## Work Experience
 **Maths, Physics and Python Tutor @ MyTutor (_November 2020 - Present_)**

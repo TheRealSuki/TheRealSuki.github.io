@@ -1,9 +1,13 @@
-# Physics Undergraduate
+# Physics Postgraduate at ICL
 
-### Technical skills: Python, SQL, MATLAB, JavaScript, HTML, CSS
+### Technical skills: Python, SQL, MATLAB, Mathematica, R Studio, JavaScript, HTML, CSS
 
 ## Education
+**MSc Physics with Quantum Dynamics | Imperial College London (_September 2024 - September 2025_)**
+- Interested in Quantum Computing and Atomic and Nuclear Physics
+
 **BSc Physics | University of Aberdeen (_September 2020 - May 2024_)**
+- Grade: 1st Class Honorus
 - Project: Ultrarelativistic charged particles
 
 ## Work Experience

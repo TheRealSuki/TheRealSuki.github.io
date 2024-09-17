@@ -2,18 +2,30 @@
   box-sizing: border-box;
 }
 
-body {
+body { 
   font-family: 'Bebas Neue';
-  padding: 10px;
-  background: #A13C69;
+  padding: 0;
+  margin: 0; /* Ensure no margin */
+  background: url('../assets/images/nebulaPic.jpg') no-repeat center center fixed;
+  background-size: cover; /* Ensures the image covers the whole page */
   color: white;
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column; /* Column layout */
 }
+
 
 /* Header/Blog Title */
 .header {
   padding: 30px;
   text-align: center;
-  background: #959F81;
+  background: #28292A;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  margin-bottom: auto;
 }
 
 .header h1 {
@@ -50,7 +62,16 @@ body {
   width: 75%;
 }
 .middle {
-  text-align: center;
+  background-color: #28292A; /* Black background */
+  padding: 5%; /* Padding inside the division */
+  border-radius: 10px; /* Optional: rounded corners for a nicer look */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 50%; /* Set a max width for the middle section */
+  margin: 100px auto; /* Center horizontally */
 }
 
 /* Right column */
@@ -67,16 +88,17 @@ body {
   padding: 20px;
 }
 
-/* Add a card effect for articles */
-.card {
-  padding: 20px;
-  margin-top: 20px;
+/* Centering and stacking the social media icons */
+.socials-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh; /* Adjust height as needed */
+  gap: 20px; /* Adjust space between icons */
+  
 }
-.card_2 {
-  padding: 20px;
-  margin-top: 20px;
-  background-color: #28292A;
-}
+
 
 /* Clear floats after the columns */
 .row:after {
@@ -100,9 +122,11 @@ body {
   padding: 20px;
   text-align: center;
   background: #28292A;
-  margin-top: 20px;
-  position: relative;
-  margin-top: 0px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  margin-top: auto; /* Push footer to the bottom */
 }
 .table {
   text-align: left;

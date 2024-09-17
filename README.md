@@ -1,4 +1,4 @@
-# Physics Undergraduate
+# Physics Postgraduate at ICL
 
 ### Technical skills: Python, SQL, MATLAB, Mathematica, R Studio, JavaScript, HTML, CSS
 

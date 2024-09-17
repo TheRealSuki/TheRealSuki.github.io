@@ -34,6 +34,8 @@ body {
 
 /* Style the top navigation bar */
 .topnav {
+  display: flex; /* Use Flexbox for alignment */
+  justify-content: center; /* Center items horizontally */
   overflow: hidden;
   background-color: #28292A;
   font-size: 30px;
@@ -72,6 +74,39 @@ body {
   gap: 20px;
   max-width: 50%; /* Set a max width for the middle section */
   margin: 100px auto; /* Center horizontally */
+}
+
+.middle_left {
+  background-color: #28292A; /* Black background */
+  padding: 5%; /* Padding inside the division */
+  border-radius: 10px; /* Optional: rounded corners for a nicer look */
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  gap: 20px;
+  max-width: 50%; /* Set a max width for the middle section */
+  margin: 100px auto; /* Center horizontally */
+}
+
+.middle h1 {
+  font-size: 2em; /* Adjust header size if needed */
+}
+
+.middle h2 {
+  font-size: 1.5em; /* Adjust sub-header size if needed */
+}
+
+.middle h3 {
+  font-size: 1.2em; /* Adjust sub-sub-header size if needed */
+}
+
+.middle p {
+  font-size: 1em; /* Ensure paragraphs are the same size */
+}
+
+.middle ul {
+  font-size: 1em; /* Ensure list items are the same size */
 }
 
 /* Right column */

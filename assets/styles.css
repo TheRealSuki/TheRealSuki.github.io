@@ -75,6 +75,26 @@ body {
   max-width: 50%; /* Set a max width for the middle section */
   margin: 100px auto; /* Center horizontally */
 }
+.middle_pdf {
+  background-color: #28292A; /* Black background */
+  padding: 20px; /* Increase padding for spacing */
+  border-radius: 15px; /* Slightly larger rounded corners for a modern look */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Add shadow for a subtle 3D effect */
+  width: 80%;
+  max-width: 90%; /* Increase the max width for larger screens */
+  margin: 50px auto; /* Less top/bottom margin */
+  display: flex;
+  justify-content: center; /* Center the PDF horizontally */
+  align-items: center; /* Vertically align */
+}
+
+.middle_pdf iframe {
+  width: 100%; /* Full width for the iframe */
+  max-width: 1200px; /* Constrain width for larger screens */
+  height: 800px; /* Adjust height as per your content */
+  border-radius: 10px; /* Optional: Add rounding to the iframe itself */
+}
+
 
 .middle_left {
   background-color: #28292A; /* Black background */

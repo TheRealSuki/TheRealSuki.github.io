@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Werewolf Game Roles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=MedievalSharp&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-medieval {
+            font-family: 'MedievalSharp', cursive;
+        }
+        /* Custom scrollbar for a more thematic feel */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1f2937; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4b5563; 
+            border-radius: 6px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280; 
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Header -->
+    <header class="text-center py-8 px-4">
+        <h1 class="font-medieval text-5xl md:text-6xl text-red-500 tracking-wider">Game Roles</h1>
+        <p class="text-gray-400 mt-2 max-w-2xl mx-auto">Click on a role to reveal its identity and abilities. Be warned, not all are who they seem...</p>
+    </header>
+
+    <!-- Roles Grid -->
+    <main class="container mx-auto px-4 pb-16">
+        <!-- Evil Roles -->
+        <section class="mb-12">
+            <h2 class="font-medieval text-3xl text-red-400 border-b-2 border-red-500/30 pb-2 mb-6">The Evil Team</h2>
+            <div id="evil-roles" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6">
+                <!-- Role cards will be injected here by JS -->
+            </div>
+        </section>
+
+        <!-- Good Roles -->
+        <section class="mb-12">
+            <h2 class="font-medieval text-3xl text-blue-400 border-b-2 border-blue-500/30 pb-2 mb-6">The Good Team</h2>
+            <div id="good-roles" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6">
+                <!-- Role cards will be injected here by JS -->
+            </div>
+        </section>
+
+        <!-- Outsider Roles -->
+        <section>
+            <h2 class="font-medieval text-3xl text-yellow-400 border-b-2 border-yellow-500/30 pb-2 mb-6">The Outsiders</h2>
+            <div id="outsider-roles" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6">
+                <!-- Role cards will be injected here by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="role-modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 hidden z-50 transition-opacity duration-300">
+        <div id="modal-content" class="bg-gray-800 border-2 border-gray-700 rounded-xl shadow-2xl w-full max-w-md mx-auto relative transform scale-95 transition-transform duration-300">
+            <button id="close-modal" class="absolute -top-4 -right-4 bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center text-2xl font-bold hover:bg-red-700 transition-colors focus:outline-none">&times;</button>
+            <div class="p-6 md:p-8">
+                <img id="modal-img" src="https://placehold.co/400x300/1f2937/ef4444?text=Role" alt="Role Image" class="w-full h-48 object-cover rounded-lg mb-4 border-2 border-gray-700">
+                <h3 id="modal-name" class="font-medieval text-4xl mb-1">Role Name</h3>
+                <p id="modal-team" class="text-xl font-bold mb-4">Team</p>
+                <p id="modal-description" class="text-gray-300 leading-relaxed"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const roles = [
+            // Evil Roles
+            { name: "The Imp", team: "Demon", teamColor: 'text-red-500', description: "Each night, you may choose to kill a player. If you die by execution, your team loses. If all other players (except your minions) are dead you win. You can kill yourself at night to make one of the minions be the Imp.", container: 'evil-roles' },
+            { name: "Scarlet Woman", team: "Minion", teamColor: 'text-red-400', description: "If there are 5 or more players alive and the Demon dies, you become the new Imp that night.", container: 'evil-roles' },
+            { name: "The Baron", team: "Minion", teamColor: 'text-red-400', description: "There are 2 extra Outsiders in play. (They are not on your team).", container: 'evil-roles' },
+            { name: "Poisoner", team: "Minion", teamColor: 'text-red-400', description: "Each night, choose a player: they are poisoned. Poisoned players' abilities do not work tonight. You can't choose the same player two nights in a row.", container: 'evil-roles' },
+            { name: "Devil's Advocate", team: "Minion", teamColor: 'text-red-400', description: "Each night, choose a player. If they would be executed by the Town tomorrow, they survive. You can't choose the same player two nights in a row.", container: 'evil-roles' },
+
+            // Good Roles
+            { name: "Washerwoman", team: "Townsfolk", teamColor: 'text-blue-400', description: "On the first night, you learn that one of two players is a specific Townsfolk.", container: 'good-roles' },
+            { name: "Librarian", team: "Townsfolk", teamColor: 'text-blue-400', description: "On the first night, you learn that one of two players is a specific Outsider.", container: 'good-roles' },
+            { name: "Investigator", team: "Townsfolk", teamColor: 'text-blue-400', description: "On the first night, you learn that one of two players is a specific Minion.", container: 'good-roles' },
+            { name: "Empath", team: "Townsfolk", teamColor: 'text-blue-400', description: "Each night, you learn how many of your two alive neighbors are evil.", container: 'good-roles' },
+            { name: "Fortune Teller", team: "Townsfolk", teamColor: 'text-blue-400', description: "Each night, choose two players. You learn if there is an evil player among them. You might trigger on the Recluse.", container: 'good-roles' },
+            { name: "Priest", team: "Townsfolk", teamColor: 'text-blue-400', description: "Each night, choose a player to protect from the Demon. You cannot choose yourself.", container: 'good-roles' },
+            { name: "Raven Keeper", team: "Townsfolk", teamColor: 'text-blue-400', description: "If you are killed by the Demon at night, you may choose a player: you learn their role.", container: 'good-roles' },
+            { name: "Virgin", team: "Townsfolk", teamColor: 'text-blue-400', description: "The first time you are nominated, if the nominator is a Townsfolk, they are executed immediately and the day ends.", container: 'good-roles' },
+            { name: "Slayer", team: "Townsfolk", teamColor: 'text-blue-400', description: "Once per game, during the day, you may publicly choose a player. If they are the Demon, they die. Otherwise, nothing happens.", container: 'good-roles' },
+            { name: "Soldier", team: "Townsfolk", teamColor: 'text-blue-400', description: "You cannot be killed by the Imp's night attack.", container: 'good-roles' },
+            { name: "Gossip", team: "Townsfolk", teamColor: 'text-blue-400', description: "Each day, you must make a public statement about a player and their role. If your statement is true, that player dies at night.", container: 'good-roles' },
+            { name: "Professor", team: "Townsfolk", teamColor: 'text-blue-400', description: "Once per game, at night, you may choose a dead player. If they are a Townsfolk, they are resurrected.", container: 'good-roles' },
+            { name: "Sage", team: "Townsfolk", teamColor: 'text-blue-400', description: "If the Imp kills you, you learn that one of two players is the Imp.", container: 'good-roles' },
+
+            // Outsider Roles
+            { name: "Butler", team: "Outsider", teamColor: 'text-yellow-400', description: "Each night, choose a player (your 'master'). You may only vote during the day if your master votes.", container: 'outsider-roles' },
+            { name: "Saint", team: "Outsider", teamColor: 'text-yellow-400', description: "If you die by execution, the Good team loses.", container: 'outsider-roles' },
+            { name: "Recluse", team: "Outsider", teamColor: 'text-yellow-400', description: "You might register as Evil, a Minion, or a Demon to information-gathering roles, even while dead.", container: 'outsider-roles' },
+            { name: "Drunk", team: "Outsider", teamColor: 'text-yellow-400', description: "You do not know you are the Drunk. You think you are a Townsfolk, but your ability gives false information or does not work.", container: 'outsider-roles' }
+        ];
+
+        // --- DOM Elements ---
+        const modal = document.getElementById('role-modal');
+        const modalContent = document.getElementById('modal-content');
+        const closeModalBtn = document.getElementById('close-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalName = document.getElementById('modal-name');
+        const modalTeam = document.getElementById('modal-team');
+        const modalDescription = document.getElementById('modal-description');
+
+        // --- Functions ---
+
+        // Function to create a role card element
+        function createRoleCard(role) {
+            const card = document.createElement('div');
+            card.className = 'role-card bg-gray-800/50 rounded-lg overflow-hidden border-2 border-transparent hover:border-gray-500 transition-all duration-300 cursor-pointer group';
+            
+            const placeholderImageUrl = `https://placehold.co/300x400/${role.team === 'Demon' || role.team === 'Minion' ? '991b1b' : '1e3a8a'}/ffffff?text=${role.name.replace(/\s/g, '+')}`;
+            
+            card.innerHTML = `
+                <img src="${placeholderImageUrl}" alt="${role.name}" class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105">
+            `;
+
+            // Store data on the element
+            card.dataset.name = role.name;
+            card.dataset.team = role.team;
+            card.dataset.teamColor = role.teamColor;
+            card.dataset.description = role.description;
+            card.dataset.imgSrc = placeholderImageUrl;
+
+            // Add event listener
+            card.addEventListener('click', () => openModal(role));
+
+            return card;
+        }
+
+        // Function to open the modal with role details
+        function openModal(role) {
+            modalName.textContent = role.name;
+            modalTeam.textContent = role.team;
+            modalDescription.textContent = role.description;
+            
+            // Apply team color
+            modalTeam.className = `text-xl font-bold mb-4 ${role.teamColor}`;
+
+            // Update image
+            const placeholderModalUrl = `https://placehold.co/400x300/${role.team === 'Demon' || role.team === 'Minion' ? '991b1b' : '1e3a8a'}/ffffff?text=${role.name.replace(/\s/g, '+')}`;
+            modalImg.src = placeholderModalUrl;
+            modalImg.alt = role.name;
+
+            // Show modal with animation
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                modalContent.classList.add('scale-100');
+            }, 10); // Small delay to allow CSS transition
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            modal.classList.remove('opacity-100');
+            modalContent.classList.remove('scale-100');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // Match transition duration
+        }
+
+        // --- Event Listeners and Initialization ---
+
+        // Populate the grid on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            roles.forEach(role => {
+                const container = document.getElementById(role.container);
+                if (container) {
+                    const card = createRoleCard(role);
+                    container.appendChild(card);
+                }
+            });
+        });
+
+        // Close modal listeners
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+    </script>
+</body>
+</html>
+

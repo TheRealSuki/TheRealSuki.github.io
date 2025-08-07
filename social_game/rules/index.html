@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Game Rules</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=MedievalSharp&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-medieval {
+            font-family: 'MedievalSharp', cursive;
+        }
+        /* Custom scrollbar for a more thematic feel */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1f2937; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4b5563; 
+            border-radius: 6px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280; 
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Header -->
+    <header class="text-center py-8 px-4">
+        <h1 class="font-medieval text-5xl md:text-6xl text-red-500 tracking-wider">Game Rules</h1>
+        <p class="text-gray-400 mt-2 max-w-2xl mx-auto">Follow these sacred rules to ensure a fair and thrilling hunt.</p>
+    </header>
+
+    <!-- Rules Content -->
+    <main class="container mx-auto px-4 pb-16 max-w-4xl">
+        <div class="bg-gray-800/50 p-6 md:p-8 rounded-lg border border-gray-700 space-y-6">
+
+            <!-- Getting Started -->
+            <section>
+                <h2 class="font-medieval text-3xl text-red-400 border-b-2 border-red-500/30 pb-2 mb-4">Getting Started</h2>
+                <p class="text-gray-300 leading-relaxed">
+                    At the beginning of the game, each player secretly receives a character token from the bag. You must read your role and ability without showing it to anyone else. Your role determines your team and your special powers.
+                </p>
+            </section>
+
+            <!-- Game Phases -->
+            <section>
+                <h2 class="font-medieval text-3xl text-red-400 border-b-2 border-red-500/30 pb-2 mb-4">The Phases of the Game</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-100">1. Day Phase</h3>
+                        <p class="text-gray-300 leading-relaxed ml-4">
+                            During the day, all living players can openly discuss who they suspect is evil. You are free to share information (or lies!) with the group. Players may also request private conversations with others, away from the main group, to share secrets or coordinate strategies.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-100">2. Voting Phase</h3>
+                        <p class="text-gray-300 leading-relaxed ml-4">
+                            Any player may choose to nominate another player for execution. Once a player is nominated, all living players vote. If the nominee receives more than half of the votes, they are marked for execution. However, the nomination process can continue. If a subsequent nominee gets even more votes, they become the new player to be executed. The player with the most votes (and more than half) at the end of the day is executed.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-100">3. Night Phase</h3>
+                        <p class="text-gray-300 leading-relaxed ml-4">
+                            All players close their eyes and go to "sleep". The Game Master will then wake individual players one by one, prompting them to use their nightly abilities with hand signals. To prevent players from hearing who is woken up, music will be played. The Game Master will also move around the room to obscure the positions of active players.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Factions & Winning -->
+            <section>
+                <h2 class="font-medieval text-3xl text-red-400 border-b-2 border-red-500/30 pb-2 mb-4">Factions & How to Win</h2>
+                 <p class="text-gray-300 leading-relaxed mb-4">There are three factions in the game: The Good Team (Townsfolk & Outsiders), and The Evil Team (Demon & Minions).</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300">
+                    <li><span class="font-bold text-blue-400">The Good Team</span> wins if the Demon is executed by a vote. Even if you are an Outsider, you are on the Good team (unless a role ability says otherwise).</li>
+                    <li><span class="font-bold text-red-400">The Evil Team</span> wins when the number of evil players is equal to the number of good players, or when nothing can prevent this from happening. The Imp may kill one player each night to work towards this goal.</li>
+                </ul>
+            </section>
+            
+            <!-- Important Rules -->
+            <section>
+                <h2 class="font-medieval text-3xl text-red-400 border-b-2 border-red-500/30 pb-2 mb-4">Important Notes</h2>
+                <ul class="list-disc list-inside space-y-2 text-gray-300">
+                    <li><span class="font-bold text-gray-100">Dead Players:</span> When you die, you are not out of the game! You may keep your eyes open at night, but you cannot speak. During the day, you may still talk, but you only have <span class="font-bold">one</span> final vote you can use for the rest of the game.</li>
+                    <li><span class="font-bold text-gray-100">Bluffing:</span> Any player can claim to be any role at any time. Deception is a key part of the game.</li>
+                    <li><span class="font-bold text-gray-100">Game Master:</span> If you have any questions about your role or the rules, you can always ask for a private chat with the Game Master.</li>
+                </ul>
+            </section>
+            
+            <!-- Link back to roles -->
+            <div class="text-center pt-6">
+                 <a href="https://therealsuki.github.io/social_game/roles/" class="inline-block bg-red-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-red-700 transition-colors text-lg">
+                    View Character Roles
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
+
